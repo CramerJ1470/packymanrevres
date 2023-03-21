@@ -11,14 +11,15 @@ module.exports = {
 
 	post: {
 		register: (req, res, next) => {
-			const { username, email, password } = req.body;
-			models.User.create({ username, email, password })
+			const { username, password } = req.body;
+			models.User.create({ username, password })
 				.then((createdUser) => res.send(createdUser))
 				.catch(next);
 		},
 
 		login: (req, res, next) => {
 			const { username, password } = req.body;
+			console.log("looking for: ", username);
 			models.User.findOne({ username })
 				.then((user) =>
 					Promise.all([user, user.matchPassword(password)])

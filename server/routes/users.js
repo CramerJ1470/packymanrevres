@@ -2,7 +2,7 @@ const controllers = require("../controllers/");
 const router = require("express").Router();
 const bodyParser = require("body-parser");
 const cors = require("cors");
-const { signupValidation, loginValidation } = require("../validation");
+const { signupValidation, loginValidation } = require("../validation.js");
 
 router.get("/", controllers.users.get);
 
