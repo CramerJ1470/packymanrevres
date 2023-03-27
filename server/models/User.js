@@ -4,7 +4,7 @@ const saltRounds = 10;
 
 const Schema = mongoose.Schema;
 const Model = mongoose.model;
-const { String, Number, Boolean, ObjectId } = Schema.Types;
+const { String, Number, Boolean, ObjectId,Array } = Schema.Types;
 
 const userSchema = new Schema({
 	username: {
@@ -18,8 +18,8 @@ const userSchema = new Schema({
 		require: true,
 	},
 
-	savedPlayingboards: [{ type: ObjectId, ref: "Playingbaords" ,required: false}],
-	games: [{ type: ObjectId, ref: "Games" }],
+	savedPlayingboards: [{ type: Array, required: false}],
+	games: {type:Array,require:false},
 });
 
 userSchema.methods = {

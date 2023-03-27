@@ -36,6 +36,10 @@ dbConnection()
 				message: err.message,
 			});
 		});
+
+		app.use(
+			cors()
+		);
 		app.listen(
 			config.port,
 			console.log(`Listening on port ${config.port}!`)

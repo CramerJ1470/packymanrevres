@@ -31,7 +31,7 @@ module.exports = {
 					}
 
 					const token = utils.jwt.createToken({ id: user._id });
-					// res.cookie(config.authCookieName, token).send(user);
+					res.cookie(config.authCookieName, token).send(user);
 
 					res.send({ user, token });
 				})
@@ -52,8 +52,8 @@ module.exports = {
 	},
 
 	put: (req, res, next) => {
-		const { reviewsGiven, _id } = req.body;
-		models.User.update({ _id: _id }, { reviewsGiven: reviewsGiven })
+		const { savedPlayingboards, _id } = req.body;
+		models.User.update({ _id: _id }, { savedPlayingboards: savedPlayingboards })
 			.then((updatedUser) => res.send(updatedUser))
 			.catch(next);
 	},

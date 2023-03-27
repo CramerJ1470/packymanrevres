@@ -4,7 +4,7 @@ const { auth } = require("../utils");
 
 router.get("/", controllers.playingboards.get);
 
-router.post("/", auth(), controllers.playingboards.post);
+router.post("/post", controllers.playingboards.post);
 
 router.put("/:id", auth(), controllers.playingboards.put);
 

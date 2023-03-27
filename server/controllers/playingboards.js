@@ -7,26 +7,13 @@ module.exports = {
 			.catch(next);
 	},
 	post: (req, res, next) => {
-		const { description } = req.body;
-		const { _id } = req.user;
-
-		models.Playingboards.create({ description, uploadedBy: _id })
-			.then((createdPlayingboards) => {
-				return Promise.all([
-					models.User.updateOne(
-						{ _id },
-						{ $push: { posts: createdPlayingboards } }
-					),
-					models.Playingboards.findOne({
-						_id: createdPlayingboards._id,
-					}),
-				]);
-			})
-			.then(([modifiedObj, PlayingboardsObj]) => {
-				res.send(PlayingboardsObj);
-			})
-			.catch(next);
-	},
+		const { rows,userId } = req.body;
+		
+		models.Playingboards.create({ rows ,userId })
+		.then((createdPlayingboard) => res.send(createdPlayingboard))
+		.catch(next);
+},
+	
 	put: (req, res, next) => {
 		const id = req.params.id;
 		const { description } = req.body;

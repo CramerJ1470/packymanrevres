@@ -12,7 +12,7 @@ router.post("/login", loginValidation, controllers.users.post.login);
 
 router.post("/logout", controllers.users.post.logout);
 
-router.put("/:id", controllers.users.put);
+router.put("/:username", controllers.users.put);
 
 router.delete("/:id", controllers.users.delete);
 
